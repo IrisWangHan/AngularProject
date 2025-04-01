@@ -1,0 +1,31 @@
+透過插值方式{{}} 帶入標題變數         {{變數}}
+透過PropertyBinding綁定placeholder   [placeholder]='變數'
+綁定enter事件在input上並呼叫function執行加入清單
+使用for迴圈帶入假資料 並使用NgForOf 的index值
+當checkbox被點選時 該筆資料加入class (label要有刪除線)
+    先定義css樣式
+    透過PropertyBinding綁定Checkbox的checked屬性
+        [checked]="ischecked"
+    
+    透過PropertyBinding綁定class並加入條件
+    如果ischecked=true那就加上class
+        [class]="{className:ischecked}
+當點選垃圾桶要刪除該筆資料
+    在icon上面寫點擊事件(click)="remove(i)"
+    撰寫remove Function
+
+定義強型別
+    src/app底下新增 todo.model.ts 
+    有兩種方式宣告資料型別(interface class)
+    使用interface(因JS無interface概念所以僅用於開發中驗證資料型態用)
+        常用
+        JSON 傳輸資料
+    使用class
+        需要new物件 
+
+達成編輯功能
+    建立input元素 class=edit
+    在label上綁定雙擊事件後僅顯示input (dbclick)="changeView()" 並要focus到該input
+    input上綁定當筆item的資料內容 將label內容顯示在input上
+    當使用者按下enter或是 失焦的時候修改item內容 (blur)="submitEdit()"  (keyup.enter)="submitEdit()"
+    

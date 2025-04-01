@@ -1,0 +1,19 @@
+<section id="listContainer">
+    <h1><i class="bi bi-check2-circle"></i>{{listName}}</h1>
+    <input type="text" #userinput [placeholder]="placeholder"
+        (keyup.enter)="addItem(userinput.value); userinput.value=''" />
+    <ul class="list-group">
+        <li *ngFor="let item of listItems;index as i;" class="list-group-item">
+            <div class="itemData" *ngIf="!item.isEdit">
+                <input type="checkbox" [id]="'dataCheck' + i" [checked]="item.completed"
+                    (change)="item.completed = !item.completed" />
+                <label [for]="'dataCheck' + i" [ngClass]="{'completed': item.completed}"
+                    (dblclick)="editItem(i)">{{item.name}}</label>
+                <i class="bi bi-trash fs-5" (click)="removeItem(i)"></i>
+            </div>
+            <input *ngIf="item.isEdit" class="editInput" type="text" [value]="item.name" #editInput
+                (keyup.enter)="updateItem(item,editInput.value)" (blur)="updateItem(item,editInput.value)"
+                (mouseenter)="editInput.focus()" />
+        </li>
+    </ul>
+</section>
